@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import './App.css';
 
 function App() {
-  const [counter , setCounter] = useState(10);
+  const [counter , setCounter] = useState(0);
   const counterRef = useRef(null);
   const startInterval = () => {
     counterRef.current = setInterval(() => {
@@ -13,11 +13,12 @@ function App() {
   }
   useEffect(() => {
       startInterval();
+      
   }, [])
   
   return (
     <div className='App'>
-      <h3>Counter: {counter}</h3>
+      <h3>Timer: {counter}</h3>
       <button onClick={() => {
         clearInterval(counterRef.current);
       }}>Pause</button>
@@ -30,6 +31,7 @@ function App() {
         clearInterval(counterRef.current);
         setCounter(0);
       }}>Reset</button>
+
     </div>
   )
 }
